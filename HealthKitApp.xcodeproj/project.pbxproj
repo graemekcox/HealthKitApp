@@ -102,9 +102,9 @@
 		0966A8A9227DE963008EC049 /* HealthKitApp */ = {
 			isa = PBXGroup;
 			children = (
+				0966A8DE2281063D008EC049 /* View Controllers */,
 				0966A8D8227DE97B008EC049 /* HealthKitApp.entitlements */,
 				0966A8AA227DE963008EC049 /* AppDelegate.swift */,
-				0966A8AC227DE963008EC049 /* ViewController.swift */,
 				0966A8AE227DE963008EC049 /* Main.storyboard */,
 				0966A8B1227DE965008EC049 /* Assets.xcassets */,
 				0966A8B3227DE965008EC049 /* LaunchScreen.storyboard */,
@@ -137,6 +137,14 @@
 				0966A8DA227DE97B008EC049 /* HealthKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0966A8DE2281063D008EC049 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0966A8AC227DE963008EC049 /* ViewController.swift */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
