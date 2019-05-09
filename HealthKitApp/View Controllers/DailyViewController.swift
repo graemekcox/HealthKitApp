@@ -11,7 +11,7 @@ import HealthKit
 import HealthKitUI
 
 
-class ViewController: UIViewController {
+class DailyViewController: UIViewController {
 
     @IBOutlet weak var energyBurned_label: UILabel!
     @IBOutlet weak var energyBurnedGoal_label: UILabel!
