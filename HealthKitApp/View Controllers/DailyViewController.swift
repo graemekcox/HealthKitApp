@@ -44,6 +44,7 @@ class DailyViewController: UIViewController {
         
         getPermissions()
         getDates()
+        getWorkouts()
 
     }
     
@@ -97,11 +98,7 @@ class DailyViewController: UIViewController {
                 print(summary.activeEnergyBurned)
                 let standUnit = HKUnit.count()
                 let standHours = summary.appleStandHours.doubleValue(for: standUnit)
-                print("Stand hours = \(standHours)")
                 self.ringView.setActivitySummary(summaries.first, animated: true)
-//                self.ringView.setActivitySummary(summary, animated: true)
-//                self.ringView.setActivitySummary(summary, animated: true)
-//                self.ringView.setActivitySummary(summary, animated: true)
             }
             self.healthStore.execute(query)
             // Handle data
@@ -109,41 +106,7 @@ class DailyViewController: UIViewController {
     }
     
     func getDates(){
-//        let calendar = Calendar.autoupdatingCurrent
-//
-//        let lastWeekDate = Calendar.current.date(byAdding: .weekOfYear, value: -1, to: Date())!
-//
-//        var dateComponents = calendar.dateComponents(
-//            [ .year, .month, .day ],
-//            from: lastWeekDate
-//        )
-//
-//        // This line is required to make the whole thing work
-//        dateComponents.calendar = calendar
-//
-//        let predicate = HKQuery.predicateForActivitySummary(with: dateComponents)
-//        let query = HKActivitySummaryQuery(predicate: predicate) { (query, summaries, error) in
-//
-//            guard let summaries = summaries, summaries.count > 0
-//                else {
-//                    return
-//            }
-//            for summary in summaries {
-//                print(summary.activeEnergyBurned)
-//                let standUnit = HKUnit.count()
-//                let standHours = summary.appleStandHours.doubleValue(for: standUnit)
-//                print("Stand hours = \(standHours)")
-//                self.ringView.setActivitySummary(summaries.first, animated: true)
-////                self.ringView.setActivitySummary(summary, animated: true)
-////                self.ringView.setActivitySummary(summary, animated: true)
-////                self.ringView.setActivitySummary(summary, animated: true)
-//            }
-//
-//            // Handle data
-//        }
 
-
-        
         let componentFlags: Set<Calendar.Component> = [.day, .month, .year, .era]
         var components = Calendar.current.dateComponents(componentFlags, from: Date())
 //        let date = Date().description
@@ -151,9 +114,6 @@ class DailyViewController: UIViewController {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        ////                summary.activeEnergyBurned
-        //                let date = dateComp.date
-        //                print("Date: \(dateFormatter.string(from:date!)),
         
         self.date_label.text = dateFormatter.string(from:Date())
         // Set the calendar used to calculate the components on the result.
@@ -181,14 +141,84 @@ class DailyViewController: UIViewController {
                 self.standGoal_label.text = String(summary.appleStandHoursGoal.doubleValue(for:standUnit))
             }
         }
-        
-
         self.healthStore.execute(query)
-
-        
     }
     
+    func getRun(){
+////            let runningObjectQuery = HKQuery.predicateForObjects(from: )
+//            let runningObjectQuery = HKQuery.predicateForWorkouts(with: .running)
+//
+//            let routeQuery = HKAnchoredObjectQuery(type: HKSeriesType.workoutRoute(), predicate: runningObjectQuery, anchor: nil, limit: HKObjectQueryNoLimit) { (query, samples, deletedObjects, anchor, error) in
+//
+//                guard error == nil else {
+//                    // Handle any errors here.
+//                    fatalError("The initial query failed.")
+//                }
+//
+//
+//                // Process the initial route data here.
+//            }
+//
+//            routeQuery.updateHandler = { (query, samples, deleted, anchor, error) in
+//
+//                guard error == nil else {
+//                    // Handle any errors here.
+//                    fatalError("The update failed.")
+//                }
+//                // Process updates or additions here.
+//            }
+//
+//            self.healthStore.execute(routeQuery)
 
+    }
+    
+    func getWorkouts(){
+        
+        let predicate = HKQuery.predicateForWorkouts(with: .running)
+        
+        let componentFlags: Set<Calendar.Component> = [.day, .month, .year, .era]
+        var components = Calendar.current.dateComponents(componentFlags, from: Date())
+        components.calendar = Calendar.current
+        let predicateDate = HKQuery.predicateForActivitySummary(with: components)
+        let combinePredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [predicate, predicateDate])
+        
+        
+        let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierEndDate,
+                                              ascending: true)
+        
+//        let query = HKSampleQuery(sampleType: <#T##HKSampleType#>, predicate: <#T##NSPredicate?#>, limit: <#T##Int#>, sortDescriptors: <#T##[NSSortDescriptor]?#>, resultsHandler: <#T##(HKSampleQuery, [HKSample]?, Error?) -> Void#>)
+////        et query = HKActivitySummaryQuery(predicate: predicate) {
+//        let query = HKActivitySummaryQuery(predicate: predicate) { query, summaries, error in
+//
+//            guard let summary = summaries?.first else {
+//                guard let queryError = error else{
+//                    fatalError("*** Did not return a valid error object. ***")
+//                }
+//                return
+//            }
+//            print(summary.appleStandHours)
+//        }
+
+        let query = HKSampleQuery(
+            sampleType: .workoutType(),
+            predicate: predicate,
+            limit: 0,
+            sortDescriptors: [sortDescriptor]) { (query, samples, error) in
+                DispatchQueue.main.async {
+                    guard
+                        let samples = samples as? [HKWorkout],
+                        error == nil
+                        else {
+//                            completion(nil, error)
+                            return
+                    }
+                    
+                    print(samples.count)
+//                    completion(samples, nil)
+                }
+        }
+        self.healthStore.execute(query)
+    }
 
 }
 
