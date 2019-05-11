@@ -17,6 +17,7 @@
 		0966A8DB227DE97B008EC049 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0966A8DA227DE97B008EC049 /* HealthKit.framework */; };
 		09D4150E2283B4230074C4B4 /* RunViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D4150D2283B4230074C4B4 /* RunViewController.swift */; };
 		09D415102283BB2D0074C4B4 /* WorkoutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D4150F2283BB2D0074C4B4 /* WorkoutTableViewController.swift */; };
+		09D41512228754D10074C4B4 /* WorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D41511228754D10074C4B4 /* WorkoutViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		0966A8DA227DE97B008EC049 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		09D4150D2283B4230074C4B4 /* RunViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunViewController.swift; sourceTree = "<group>"; };
 		09D4150F2283BB2D0074C4B4 /* WorkoutTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTableViewController.swift; sourceTree = "<group>"; };
+		09D41511228754D10074C4B4 /* WorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 				0966A8AC227DE963008EC049 /* DailyViewController.swift */,
 				09D4150D2283B4230074C4B4 /* RunViewController.swift */,
 				09D4150F2283BB2D0074C4B4 /* WorkoutTableViewController.swift */,
+				09D41511228754D10074C4B4 /* WorkoutViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 			files = (
 				0966A8AD227DE963008EC049 /* DailyViewController.swift in Sources */,
 				09D4150E2283B4230074C4B4 /* RunViewController.swift in Sources */,
+				09D41512228754D10074C4B4 /* WorkoutViewController.swift in Sources */,
 				09D415102283BB2D0074C4B4 /* WorkoutTableViewController.swift in Sources */,
 				0966A8AB227DE963008EC049 /* AppDelegate.swift in Sources */,
 			);

@@ -19,11 +19,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ymM-Zo-fab" customClass="HKActivityRingView">
-                                <rect key="frame" x="100" y="94" width="100" height="100"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="100" y="94" width="150" height="150"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="LYK-oo-BoA"/>
-                                    <constraint firstAttribute="width" constant="100" id="Lax-kf-iuD"/>
+                                    <constraint firstAttribute="height" constant="150" id="LYK-oo-BoA"/>
+                                    <constraint firstAttribute="width" constant="150" id="Lax-kf-iuD"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zha-eO-87x">
@@ -161,24 +161,77 @@
                             <outlet property="delegate" destination="JkB-lv-T0x" id="i0S-hD-KhR"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="R1W-TN-Gqe" kind="show" identifier="to_workout" id="kFs-En-qDP"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ulo-iw-UyQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-862" y="755"/>
+            <point key="canvasLocation" x="-874" y="678"/>
         </scene>
-        <!--View Controller-->
+        <!--Workout View Controller-->
         <scene sceneID="oBq-GD-9SI">
             <objects>
-                <viewController id="R1W-TN-Gqe" sceneMemberID="viewController">
+                <viewController id="R1W-TN-Gqe" customClass="WorkoutViewController" customModule="HealthKitApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="l0M-PM-edT">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="394" height="301.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Haq-gS-cyz">
+                                <rect key="frame" x="179" y="50" width="36" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Duration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="355-y5-QYL">
+                                <rect key="frame" x="174" y="81" width="250" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="paH-qP-abm">
+                                <rect key="frame" x="163.5" y="112" width="67" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Calories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uck-ZQ-fTE">
+                                <rect key="frame" x="175.5" y="143" width="250" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XZ5-XY-Yzj">
+                                <rect key="frame" x="178" y="174" width="38" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="XZ5-XY-Yzj" firstAttribute="centerX" secondItem="l0M-PM-edT" secondAttribute="centerX" id="0B6-Co-tpg"/>
+                            <constraint firstItem="Haq-gS-cyz" firstAttribute="centerX" secondItem="l0M-PM-edT" secondAttribute="centerX" id="0qV-62-q57"/>
+                            <constraint firstItem="uck-ZQ-fTE" firstAttribute="top" secondItem="paH-qP-abm" secondAttribute="bottom" constant="10" id="CBI-ev-ZCc"/>
+                            <constraint firstItem="355-y5-QYL" firstAttribute="centerX" secondItem="l0M-PM-edT" secondAttribute="centerX" id="CKQ-Ex-5bg"/>
+                            <constraint firstItem="uck-ZQ-fTE" firstAttribute="centerX" secondItem="l0M-PM-edT" secondAttribute="centerX" id="Uc5-kG-pod"/>
+                            <constraint firstItem="Haq-gS-cyz" firstAttribute="top" secondItem="l0M-PM-edT" secondAttribute="top" constant="50" id="YdQ-oo-kcB"/>
+                            <constraint firstItem="paH-qP-abm" firstAttribute="centerX" secondItem="l0M-PM-edT" secondAttribute="centerX" id="bQr-dC-NvW"/>
+                            <constraint firstItem="paH-qP-abm" firstAttribute="top" secondItem="355-y5-QYL" secondAttribute="bottom" constant="10" id="rXY-zt-5O7"/>
+                            <constraint firstItem="355-y5-QYL" firstAttribute="top" secondItem="Haq-gS-cyz" secondAttribute="bottom" constant="10" id="t2V-PF-QBM"/>
+                            <constraint firstItem="XZ5-XY-Yzj" firstAttribute="top" secondItem="uck-ZQ-fTE" secondAttribute="bottom" constant="10" id="uTh-6H-w6A"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="calorie_string" destination="uck-ZQ-fTE" id="uPb-Yh-oKK"/>
+                        <outlet property="date_string" destination="Haq-gS-cyz" id="nOx-fJ-muJ"/>
+                        <outlet property="distance_string" destination="paH-qP-abm" id="i6b-5g-PbA"/>
+                        <outlet property="duration_string" destination="355-y5-QYL" id="nL6-pA-9VD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xQl-HC-4py" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-112" y="552"/>
+            <point key="canvasLocation" x="73.913043478260875" y="637.5"/>
         </scene>
     </scenes>
 </document>
