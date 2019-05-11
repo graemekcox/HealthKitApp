@@ -11,11 +11,20 @@ import HealthKit
 
 class WorkoutTableViewController: UITableViewController {
 
-    var workouts:[HKWorkout]!
+    var workouts = [HKWorkout]()
+    var healthStore: HKHealthStore!
+    let dateFormatter = DateFormatter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+//        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM dd, yyyy - HH:mm"
+        
+//        self.tableView = UITableView(frame: self.tableView.frame, style: .plain)
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "workoutCell")
+        
+        getWorkouts()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -24,6 +33,9 @@ class WorkoutTableViewController: UITableViewController {
     }
     
     func getWorkouts() {
+        
+        self.healthStore = HKHealthStore()
+        print("Get workouts")
         let predicate = HKQuery.predicateForWorkouts(with: .running)
         
         let componentFlags: Set<Calendar.Component> = [.day, .month, .year, .era]
@@ -32,7 +44,7 @@ class WorkoutTableViewController: UITableViewController {
         let predicateDate = HKQuery.predicateForActivitySummary(with: components)
         let combinePredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [predicate, predicateDate])
         
-        let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierEndDate,
+        let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierEndDate, ascending: true)
         
         let query = HKSampleQuery(
             sampleType: .workoutType(),
@@ -48,40 +60,63 @@ class WorkoutTableViewController: UITableViewController {
                             return
                     }
                     
-                    for sample in samples! {
-                        print(sampl)
+                    for sample in samples {
+//                        print(sample)
+                        self.workouts.append(sample)
+                        self.tableView.reloadData()
                     }
 //                    workouts.append(samples)
-                    
-                    print(samples.count)
                     //                    completion(samples, nil)
                 }
         }
         self.healthStore.execute(query)
     }
-    }
+//    }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return self.workouts.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let reuseIdentifier = "workoutCell"
+
+        var cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
+        if cell.detailTextLabel == nil {
+            cell = UITableViewCell(style: .value1, reuseIdentifier: reuseIdentifier)
+        }
 
         // Configure the cell...
+        let workout: HKWorkout = self.workouts[indexPath.row]
+        // workout.workoutActivityType
+//        let kmUnit = HKQuantity(unit: HKUnit.meter()
+//                                doubleValue: workout.totalDistance?.doubleValue(for: HKUnit.meter()))
+        
+        // distance = workout.totalDistance!.doubleValue(for: HKUnit.meter())
+        // duration = workout.duration
+        // calories = workout.totalEnergyBurned?.doubleValue(for: HKUnit.largeCalorie()) ?? 0
+        
 
+//        DateFormatter.
+        let temp = dateFormatter.string(from: workout.startDate)
+        print(workout.startDate.description)
+        cell.textLabel?.text = String(temp)
+        
+        let calories = workout.totalEnergyBurned?.doubleValue(for: HKUnit.largeCalorie()) ?? 0
+        cell.detailTextLabel?.text = String(format: "Total Calories burned: %.2f", calories)
+        
+        
+//        print(String(workout.duration))
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
