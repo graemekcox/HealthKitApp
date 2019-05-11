@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9V4-Xm-5mx">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ymM-Zo-fab" customClass="HKActivityRingView">
-                                <rect key="frame" x="100" y="94" width="150" height="150"/>
+                                <rect key="frame" x="100" y="138" width="150" height="150"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="LYK-oo-BoA"/>
@@ -123,6 +123,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="bNU-if-TZZ"/>
                     <connections>
                         <outlet property="date_label" destination="SmD-3T-kVx" id="L3Q-Iz-VsV"/>
                         <outlet property="energyBurnedGoal_label" destination="ydB-RM-x46" id="Baz-R4-2VF"/>
@@ -136,7 +137,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-862.31884057971024" y="98.4375"/>
+            <point key="canvasLocation" x="47.826086956521742" y="98.4375"/>
         </scene>
         <!--Workout Table View Controller-->
         <scene sceneID="tQ3-5n-Lcv">
@@ -178,7 +179,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Haq-gS-cyz">
-                                <rect key="frame" x="179" y="50" width="36" height="21"/>
+                                <rect key="frame" x="179" y="100" width="36" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -190,7 +191,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="paH-qP-abm">
-                                <rect key="frame" x="163.5" y="112" width="67" height="21"/>
+                                <rect key="frame" x="163.5" y="162" width="67" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -202,7 +203,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XZ5-XY-Yzj">
-                                <rect key="frame" x="178" y="174" width="38" height="21"/>
+                                <rect key="frame" x="178" y="224" width="38" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -215,7 +216,7 @@
                             <constraint firstItem="uck-ZQ-fTE" firstAttribute="top" secondItem="paH-qP-abm" secondAttribute="bottom" constant="10" id="CBI-ev-ZCc"/>
                             <constraint firstItem="355-y5-QYL" firstAttribute="centerX" secondItem="l0M-PM-edT" secondAttribute="centerX" id="CKQ-Ex-5bg"/>
                             <constraint firstItem="uck-ZQ-fTE" firstAttribute="centerX" secondItem="l0M-PM-edT" secondAttribute="centerX" id="Uc5-kG-pod"/>
-                            <constraint firstItem="Haq-gS-cyz" firstAttribute="top" secondItem="l0M-PM-edT" secondAttribute="top" constant="50" id="YdQ-oo-kcB"/>
+                            <constraint firstItem="Haq-gS-cyz" firstAttribute="top" secondItem="l0M-PM-edT" secondAttribute="top" constant="100" id="YdQ-oo-kcB"/>
                             <constraint firstItem="paH-qP-abm" firstAttribute="centerX" secondItem="l0M-PM-edT" secondAttribute="centerX" id="bQr-dC-NvW"/>
                             <constraint firstItem="paH-qP-abm" firstAttribute="top" secondItem="355-y5-QYL" secondAttribute="bottom" constant="10" id="rXY-zt-5O7"/>
                             <constraint firstItem="355-y5-QYL" firstAttribute="top" secondItem="Haq-gS-cyz" secondAttribute="bottom" constant="10" id="t2V-PF-QBM"/>
@@ -232,6 +233,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xQl-HC-4py" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="73.913043478260875" y="637.5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Amg-kE-asf">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9V4-Xm-5mx" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="s3a-yp-ZsV">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="dal-hg-ogt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kap-VN-9JC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-862.31884057971024" y="98.4375"/>
         </scene>
     </scenes>
 </document>
